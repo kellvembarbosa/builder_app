@@ -1,0 +1,1 @@
+const String URL_BASE = "https://www.androbuilder.com";
