@@ -17,6 +17,21 @@ mixin _$WordpressController on _WordpressControllerBase, Store {
               name: '_WordpressControllerBase.listPosts'))
           .value;
 
+  final _$isLoadingAtom = Atom(name: '_WordpressControllerBase.isLoading');
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   final _$fetchStatusAtom = Atom(name: '_WordpressControllerBase.fetchStatus');
 
   @override
@@ -87,8 +102,20 @@ mixin _$WordpressController on _WordpressControllerBase, Store {
   }
 
   @override
+  dynamic updateisLoading(bool nisLoading) {
+    final _$actionInfo = _$_WordpressControllerBaseActionController.startAction(
+        name: '_WordpressControllerBase.updateisLoading');
+    try {
+      return super.updateisLoading(nisLoading);
+    } finally {
+      _$_WordpressControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
+isLoading: ${isLoading},
 fetchStatus: ${fetchStatus},
 hasMoreItems: ${hasMoreItems},
 listPosts: ${listPosts}

@@ -10,11 +10,12 @@ part 'wordpress_controller.g.dart';
 class WordpressController = _WordpressControllerBase with _$WordpressController;
 
 abstract class _WordpressControllerBase with Store {
-
   int _perPage  = 10;
   int _page     = 1;
 
   WordpressRepository _wordpressRepository = Modular.get();
+  @observable
+  bool isLoading = false;
 
   @observable
   FetchStatus fetchStatus = FetchStatus.Loading;
@@ -30,6 +31,9 @@ abstract class _WordpressControllerBase with Store {
 
   @action
   clearListWp() => _listPosts.clear();
+
+  @action
+  updateisLoading(bool nisLoading) => isLoading = nisLoading;
 
   @action
   Future<void> loadItems({@required String url, refresh = false}) async {

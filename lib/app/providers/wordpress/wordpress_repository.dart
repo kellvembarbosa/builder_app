@@ -24,11 +24,11 @@ class WordpressRepository extends Disposable {
         var post = PostModel.fromJson(postItem);
         listPosts.add(post);
       }
+      Modular.get<WordpressController>().updateisLoading(false);
     } catch (exception, stack) {
       print(exception);
       print(stack);
     }
-    debugPrint("listPOsts ${listPosts.toString()}");
     return listPosts;
   }
 
